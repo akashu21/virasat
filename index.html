@@ -13,8 +13,8 @@
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
+  <div class="ambient-particles" id="ambientParticles" aria-hidden="true"></div>
   <button class="scrim" id="scrim" aria-label="Close navigation"></button>
-
   <aside class="sidebar" id="sidebar">
     <a class="brand" href="#home" data-page="home" aria-label="Virasat home">
       <span class="brand-mark"><span>V</span></span>
@@ -53,41 +53,26 @@
       </label>
     </header>
 
-    <section class="page landing-page active-page" id="page-home" data-title="THE ENTRANCE">
-      <div class="landing-ornament top-left">✧ &nbsp; ✦</div>
-      <div class="landing-ornament top-right">✦ &nbsp; ✧</div>
+    <section class="page landing-page active-page" id="page-home">
+      <div class="landing-ornament top-left">✧ &nbsp; ✦</div><div class="landing-ornament top-right">✦ &nbsp; ✧</div>
       <div class="hero">
         <div class="eyebrow"><span></span> AN INSTITUTION OUTSIDE OF TIME <span></span></div>
-        <div class="seal" aria-hidden="true">
-          <div class="seal-ring"><div class="seal-inner"><span class="seal-star">✧</span><span class="seal-letter">V</span><span class="seal-motto">MEMORIA · AETERNA</span></div></div>
-        </div>
+        <div class="seal" aria-hidden="true"><div class="seal-ring"><div class="seal-inner"><span class="seal-star">✧</span><span class="seal-letter">V</span><span class="seal-motto">MEMORIA · AETERNA</span></div></div></div>
         <p class="hero-pretitle">THE DOORS HAVE BEEN WAITING</p>
         <h1>THE FORGOTTEN<br><i>ARCHIVE</i></h1>
         <p class="tagline">“Some worlds are made. Some are discovered.<br>And some refuse to be forgotten.”</p>
         <button class="enter-button" id="enterButton"><span>ENTER THE ARCHIVE</span><b>→</b></button>
         <p class="hero-footnote">ESTABLISHED BEYOND THE KNOWN AGES <span>✧</span> OPEN TO THE CURIOUS</p>
       </div>
-      <div class="arch-scene" aria-hidden="true">
-        <div class="arch-halo"></div><div class="arch-outer"></div><div class="arch-middle"></div><div class="arch-inner"></div>
-        <div class="arch-door left-door"></div><div class="arch-door right-door"></div>
-        <div class="door-seam"></div><div class="door-sigil">✧</div>
-        <div class="floor-lines"></div>
-      </div>
+      <div class="arch-scene" aria-hidden="true"><div class="arch-halo"></div><div class="arch-outer"></div><div class="arch-middle"></div><div class="arch-inner"></div><div class="arch-door left-door"></div><div class="arch-door right-door"></div><div class="door-seam"></div><div class="door-sigil">✧</div><div class="floor-lines"></div></div>
       <div class="landing-bottom"><span>VOL. I — THE BEGINNING</span><span>✦</span><span>ALL WORLDS LEAVE A TRACE</span></div>
     </section>
 
     <section class="page archive-page" id="page-archive">
-      <div class="archive-heading">
-        <p class="eyebrow"><span></span> THE ARCHIVE IS AWAKE <span></span></p>
-        <h1>THE COLLECTION</h1>
-        <p class="archive-intro">A living record of imagined realms, lost empires, impossible beings and the stories that bind them.</p>
-      </div>
-      <div class="archive-feature">
-        <div class="feature-mark">V</div>
-        <div><span class="small-label">A NOTE FROM THE KEEPERS</span><h2>Nothing is truly lost<br>while it can be remembered.</h2><p>Choose a shelf from the collection to begin exploring. New records will find their place here in time.</p></div>
-      </div>
+      <div class="archive-heading"><p class="eyebrow"><span></span> THE ARCHIVE IS AWAKE <span></span></p><h1>THE COLLECTION</h1><p class="archive-intro">A living record of imagined realms, lost empires, impossible beings and the stories that bind them.</p></div>
+      <div class="archive-feature"><div class="feature-mark">V</div><div><span class="small-label">A NOTE FROM THE KEEPERS</span><h2>Nothing is truly lost<br>while it can be remembered.</h2><p>Choose a shelf from the collection to begin exploring. New records will find their place here in time.</p></div></div>
       <div class="shelf-grid" id="shelfGrid"></div>
-      <p class="archive-disclaimer">THE ARCHIVE IS UNDER CONSTRUCTION · ITS FIRST VOLUMES ARE YET TO BE WRITTEN</p>
+      <p class="archive-disclaimer">THE ARCHIVE IS UNDER CONSTRUCTION · ITS FIRST VOLUMES ARE BEING WRITTEN</p>
     </section>
 
     <section class="page section-page" id="page-section">
@@ -97,25 +82,47 @@
       <h1 id="sectionTitle">WORLDS &amp; UNIVERSES</h1>
       <p class="section-description" id="sectionDescription"></p>
       <div class="section-divider"><span>✦</span></div>
-      <div class="empty-record">
-        <div class="empty-glyph">⌑</div>
-        <h2>THE PAGES ARE STILL BLANK</h2>
-        <p>This shelf has been prepared. Its first records have not yet been entered.</p>
-        <span class="record-stamp">AWAITING DISCOVERY</span>
+      <div class="world-collection" id="worldCollection" hidden>
+        <button class="world-entry" id="openNoLand">
+          <span class="entry-symbol">✧</span>
+          <span class="entry-copy"><small>WORLD RECORD 001 · ESTABLISHED UNIVERSE</small><strong>NO-LAND</strong><em>An unfamiliar world shaped by creation, survival and deception.</em><span class="entry-status">DARK FANTASY · SUPERNATURAL</span></span>
+          <span class="entry-arrow">↗</span>
+        </button>
       </div>
+      <div class="empty-record" id="genericEmptyRecord"><div class="empty-glyph">⌑</div><h2>THE PAGES ARE STILL BLANK</h2><p>This shelf has been prepared. Its first records have not yet been entered.</p><span class="record-stamp">AWAITING DISCOVERY</span></div>
       <button class="text-button" id="backToCollection">← RETURN TO THE COLLECTION</button>
     </section>
 
+    <section class="page world-record-page" id="page-noland">
+      <div class="record-hero">
+        <div class="record-kicker">VIRASAT · WORLD RECORD 001</div><div class="record-sigil">✧</div>
+        <p class="eyebrow"><span></span> AN ESTABLISHED UNIVERSE <span></span></p>
+        <h1>NO-LAND</h1>
+        <p class="record-subtitle">An unfamiliar world shaped by creation, survival and deception.</p>
+        <div class="record-tags"><span>DARK FANTASY</span><span>SUPERNATURAL</span><span>WORLD RECORD</span></div>
+      </div>
+      <nav class="record-index" aria-label="No-Land record contents">
+        <a href="#nl-identity">Identity</a><a href="#nl-arrival">Arrival</a><a href="#nl-dungeons">Dungeon system</a><a href="#nl-pillars">Five Pillars</a><a href="#nl-people">Characters</a><a href="#nl-connections">Connections</a>
+      </nav>
+      <article class="record-content">
+        <section class="lore-section" id="nl-identity"><span class="lore-number">01 / WORLD IDENTITY</span><h2>A world beyond the familiar</h2><p>No-Land is a supernatural world into which people from Earth are summoned. Its society revolves around dungeons, their creators, the people who inhabit them and those who enter them.</p><p>Dungeons are constructed experiences containing rules, anomalies, challenges and rewards. Their creators develop them, while players and other inhabitants interact with them.</p><div class="fact-strip"><div><small>IMPORTANT HUB</small><strong>Earth Dungeon</strong></div><div><small>WORLD STRUCTURE</small><strong>Five Pillars</strong></div><div><small>KNOWN PROTAGONIST</small><strong>Arin</strong></div></div></section>
+        <section class="lore-section" id="nl-arrival"><span class="lore-number">02 / ARRIVAL &amp; SOCIETY</span><h2>Three paths at sixteen</h2><p>People from Earth are brought into No-Land through a summoning process. At age 16, individuals face three choices:</p><div class="path-grid"><div class="path-card"><span>♜</span><h3>Creator</h3><p>Creates and manages dungeons, developing their rules, challenges and experiences.</p></div><div class="path-card"><span>♙</span><h3>NPC</h3><p>Becomes part of the world's dungeon-based society.</p></div><div class="path-card"><span>⌖</span><h3>Civilian</h3><p>Takes the civilian path within No-Land.</p></div></div><div class="status-note"><b>IN DEVELOPMENT</b><span>The precise rights, restrictions and progression differences between these paths still need their own records.</span></div></section>
+        <section class="lore-section" id="nl-dungeons"><span class="lore-number">03 / CENTRAL SYSTEM</span><h2>The Dungeon System</h2><p>Creators construct dungeon spaces containing anomalies, rules, restrictions, challenges, objectives, rewards and escape conditions.</p><div class="system-list"><div><b>Completion</b><span>Can contribute to points</span></div><div><b>Kills</b><span>Can contribute to points</span></div><div><b>Captures</b><span>Can contribute to points</span></div><div><b>Escapes</b><span>Can contribute to points</span></div><div><b>Ratings</b><span>Dungeon quality is evaluated</span></div></div><div class="canon-note"><b>ESTABLISHED RULES</b><p>A creator cannot die inside their own dungeon. Dungeon design also needs meaningful possibilities and escape routes rather than completely unreasonable rules.</p></div><p>Dungeon creation and exploration connect to a wider economy involving creator points, rankings, gifts, professions, trade streets, houses, group chats, weekly runs and penalties. Exact formulas remain undocumented.</p></section>
+        <section class="lore-section" id="nl-pillars"><span class="lore-number">04 / WORLD STRUCTURE</span><h2>The Five Pillars</h2><p>The Five Pillars are an established major component of No-Land's world structure.</p><div class="pillar-grid"><span>PILLAR I</span><span>PILLAR II</span><span>PILLAR III</span><span>PILLAR IV</span><span>PILLAR V</span></div><div class="status-note"><b>UNDECIDED</b><span>Their individual identities, functions, hierarchy and relationship with the dungeon system have not yet been entered into this record.</span></div></section>
+        <section class="lore-section" id="nl-people"><span class="lore-number">05 / CHARACTERS &amp; ENTITIES</span><h2>Those who shape the record</h2><div class="character-record"><div class="character-mark">A</div><div><span class="record-stamp">PRIMARY PROTAGONIST</span><h3>Arin</h3><p>Path of Deception · Sequence 9 · 100% compatibility. His False Self Method involves controlling what others perceive about him. His priorities revolve around possessions, promises, territory, secrets and his inner circle.</p><p><b>Associated entity:</b> Whispering Oracle Tree.</p></div></div><div class="character-record"><div class="character-mark">K</div><div><span class="record-stamp">ALLY &amp; RIVAL</span><h3>Kael</h3><p>Arin's childhood friend and improving rival. Associated gift: Black Smoke.</p></div></div></section>
+        <section class="lore-section" id="nl-connections"><span class="lore-number">06 / CONNECTED RECORDS</span><h2>Follow the threads</h2><div class="connection-grid"><a href="#nl-dungeons">Dungeon System <small>POWER &amp; SYSTEM</small></a><a href="#nl-pillars">Five Pillars <small>WORLD STRUCTURE</small></a><a href="#nl-people">Arin <small>CHARACTER</small></a><a href="#nl-people">Kael <small>CHARACTER</small></a><a href="#nl-identity">Earth Dungeon <small>LOCATION</small></a><a href="#nl-arrival">Everdawn Academy <small>INSTITUTION</small></a><a href="#nl-people">Whispering Oracle Tree <small>ENTITY</small></a></div></section>
+        <div class="record-footer"><span>RECORD 001 · NO-LAND</span><span>CANON: MIXED VISIBILITY</span><span>VIRASAT · THE FORGOTTEN ARCHIVE</span></div>
+      </article>
+      <button class="text-button record-back" id="backFromNoLand">← RETURN TO WORLDS &amp; UNIVERSES</button>
+    </section>
+
     <section class="page section-page creator-page" id="page-creator">
-      <div class="section-topline"><span>THE FORGOTTEN ARCHIVE</span><span>RESTRICTED SHELF</span></div>
-      <div class="section-emblem">⚿</div>
-      <p class="eyebrow"><span></span> THE KEEPER'S CHAMBER <span></span></p>
-      <h1>CREATOR STUDIO</h1>
+      <div class="section-topline"><span>THE FORGOTTEN ARCHIVE</span><span>RESTRICTED SHELF</span></div><div class="section-emblem">⚿</div>
+      <p class="eyebrow"><span></span> THE KEEPER'S CHAMBER <span></span></p><h1>CREATOR STUDIO</h1>
       <p class="section-description">A future workspace for creating, editing and connecting the records held within VIRASAT.</p>
       <div class="notice-panel"><span class="notice-icon">⚠</span><div><strong>OWNER ACCESS IS NOT YET ENABLED</strong><p>This preview has no authentication or private storage. Creator Studio is a visual placeholder only. Secure sign-in, owner permissions, a database and private draft storage must be implemented in a backend before real private content is added.</p></div></div>
       <div class="empty-record"><div class="empty-glyph">⌑</div><h2>THE KEEPER'S TOOLS ARE SEALED</h2><p>The chamber will open when its safeguards are built.</p><span class="record-stamp">BACKEND REQUIRED</span></div>
     </section>
-
     <footer class="main-footer"><span>VIRASAT · THE FORGOTTEN ARCHIVE</span><span>AN ARCHIVE OF WORLDS THAT REFUSE TO DISAPPEAR</span></footer>
   </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
