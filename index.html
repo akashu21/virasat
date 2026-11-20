@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b10">
+  <meta name="description" content="VIRASAT — The Forgotten Archive. A growing archive of worlds, civilizations, characters and stories.">
+  <title>VIRASAT — The Forgotten Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <button class="scrim" id="scrim" aria-label="Close navigation"></button>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#home" data-page="home" aria-label="Virasat home">
+      <span class="brand-mark"><span>V</span></span>
+      <span class="brand-copy"><strong>VIRASAT</strong><small>THE FORGOTTEN ARCHIVE</small></span>
+    </a>
+    <div class="side-rule"><span>THE COLLECTION</span></div>
+    <nav class="nav-list" aria-label="Main navigation">
+      <a class="nav-link active" href="#home" data-page="home"><span class="nav-icon">⌂</span>Home</a>
+      <a class="nav-link" href="#worlds" data-page="worlds"><span class="nav-icon">✧</span>Worlds &amp; Universes</a>
+      <a class="nav-link" href="#civilizations" data-page="civilizations"><span class="nav-icon">♜</span>Civilizations</a>
+      <a class="nav-link" href="#characters" data-page="characters"><span class="nav-icon">♙</span>Characters</a>
+      <a class="nav-link" href="#powers" data-page="powers"><span class="nav-icon">⌘</span>Powers &amp; Systems</a>
+      <a class="nav-link" href="#literature" data-page="literature"><span class="nav-icon">❧</span>Literature</a>
+      <a class="nav-link" href="#geography" data-page="geography"><span class="nav-icon">⌖</span>Geography</a>
+      <a class="nav-link" href="#history" data-page="history"><span class="nav-icon">◷</span>History &amp; Timelines</a>
+      <a class="nav-link" href="#creatures" data-page="creatures"><span class="nav-icon">♢</span>Creatures &amp; Entities</a>
+      <a class="nav-link" href="#ideas" data-page="ideas"><span class="nav-icon">✳</span>Idea Vault</a>
+    </nav>
+    <div class="side-bottom">
+      <div class="side-rule"><span>THE KEEPER</span></div>
+      <a class="nav-link creator-link" href="#creator" data-page="creator"><span class="nav-icon">⚿</span>Creator Studio <em>OWNER</em></a>
+      <p class="sidebar-note">Every forgotten thing<br>begins with a record.</p>
+      <div class="side-footer"><span class="status-dot"></span> ARCHIVE SYSTEM · PREVIEW</div>
+    </div>
+  </aside>
+
+  <main class="main-shell">
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <div class="breadcrumb"><span>VIRASAT</span><b>/</b><span id="crumbCurrent">THE ENTRANCE</span></div>
+      <label class="search-wrap">
+        <span class="search-symbol">⌕</span>
+        <input id="searchInput" type="search" placeholder="Search the archive..." autocomplete="off" aria-label="Search archive sections">
+        <kbd>ENTER</kbd>
+        <div class="search-results" id="searchResults" role="listbox"></div>
+      </label>
+    </header>
+
+    <section class="page landing-page active-page" id="page-home" data-title="THE ENTRANCE">
+      <div class="landing-ornament top-left">✧ &nbsp; ✦</div>
+      <div class="landing-ornament top-right">✦ &nbsp; ✧</div>
+      <div class="hero">
+        <div class="eyebrow"><span></span> AN INSTITUTION OUTSIDE OF TIME <span></span></div>
+        <div class="seal" aria-hidden="true">
+          <div class="seal-ring"><div class="seal-inner"><span class="seal-star">✧</span><span class="seal-letter">V</span><span class="seal-motto">MEMORIA · AETERNA</span></div></div>
+        </div>
+        <p class="hero-pretitle">THE DOORS HAVE BEEN WAITING</p>
+        <h1>THE FORGOTTEN<br><i>ARCHIVE</i></h1>
+        <p class="tagline">“Some worlds are made. Some are discovered.<br>And some refuse to be forgotten.”</p>
+        <button class="enter-button" id="enterButton"><span>ENTER THE ARCHIVE</span><b>→</b></button>
+        <p class="hero-footnote">ESTABLISHED BEYOND THE KNOWN AGES <span>✧</span> OPEN TO THE CURIOUS</p>
+      </div>
+      <div class="arch-scene" aria-hidden="true">
+        <div class="arch-halo"></div><div class="arch-outer"></div><div class="arch-middle"></div><div class="arch-inner"></div>
+        <div class="arch-door left-door"></div><div class="arch-door right-door"></div>
+        <div class="door-seam"></div><div class="door-sigil">✧</div>
+        <div class="floor-lines"></div>
+      </div>
+      <div class="landing-bottom"><span>VOL. I — THE BEGINNING</span><span>✦</span><span>ALL WORLDS LEAVE A TRACE</span></div>
+    </section>
+
+    <section class="page archive-page" id="page-archive">
+      <div class="archive-heading">
+        <p class="eyebrow"><span></span> THE ARCHIVE IS AWAKE <span></span></p>
+        <h1>THE COLLECTION</h1>
+        <p class="archive-intro">A living record of imagined realms, lost empires, impossible beings and the stories that bind them.</p>
+      </div>
+      <div class="archive-feature">
+        <div class="feature-mark">V</div>
+        <div><span class="small-label">A NOTE FROM THE KEEPERS</span><h2>Nothing is truly lost<br>while it can be remembered.</h2><p>Choose a shelf from the collection to begin exploring. New records will find their place here in time.</p></div>
+      </div>
+      <div class="shelf-grid" id="shelfGrid"></div>
+      <p class="archive-disclaimer">THE ARCHIVE IS UNDER CONSTRUCTION · ITS FIRST VOLUMES ARE YET TO BE WRITTEN</p>
+    </section>
+
+    <section class="page section-page" id="page-section">
+      <div class="section-topline"><span>THE FORGOTTEN ARCHIVE</span><span id="sectionIndex">SHELF 01</span></div>
+      <div class="section-emblem" id="sectionEmblem">✧</div>
+      <p class="eyebrow"><span></span> A SHELF WITHIN THE ARCHIVE <span></span></p>
+      <h1 id="sectionTitle">WORLDS &amp; UNIVERSES</h1>
+      <p class="section-description" id="sectionDescription"></p>
+      <div class="section-divider"><span>✦</span></div>
+      <div class="empty-record">
+        <div class="empty-glyph">⌑</div>
+        <h2>THE PAGES ARE STILL BLANK</h2>
+        <p>This shelf has been prepared. Its first records have not yet been entered.</p>
+        <span class="record-stamp">AWAITING DISCOVERY</span>
+      </div>
+      <button class="text-button" id="backToCollection">← RETURN TO THE COLLECTION</button>
+    </section>
+
+    <section class="page section-page creator-page" id="page-creator">
+      <div class="section-topline"><span>THE FORGOTTEN ARCHIVE</span><span>RESTRICTED SHELF</span></div>
+      <div class="section-emblem">⚿</div>
+      <p class="eyebrow"><span></span> THE KEEPER'S CHAMBER <span></span></p>
+      <h1>CREATOR STUDIO</h1>
+      <p class="section-description">A future workspace for creating, editing and connecting the records held within VIRASAT.</p>
+      <div class="notice-panel"><span class="notice-icon">⚠</span><div><strong>OWNER ACCESS IS NOT YET ENABLED</strong><p>This preview has no authentication or private storage. Creator Studio is a visual placeholder only. Secure sign-in, owner permissions, a database and private draft storage must be implemented in a backend before real private content is added.</p></div></div>
+      <div class="empty-record"><div class="empty-glyph">⌑</div><h2>THE KEEPER'S TOOLS ARE SEALED</h2><p>The chamber will open when its safeguards are built.</p><span class="record-stamp">BACKEND REQUIRED</span></div>
+    </section>
+
+    <footer class="main-footer"><span>VIRASAT · THE FORGOTTEN ARCHIVE</span><span>AN ARCHIVE OF WORLDS THAT REFUSE TO DISAPPEAR</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
