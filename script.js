@@ -88,7 +88,7 @@ document.querySelectorAll(".record-index a,.connection-grid a").forEach(a=>a.add
   const runes=document.getElementById("arcaneRunes");
   const mobile=window.matchMedia("(max-width: 650px)").matches;
   if(host){
-    const count=mobile?18:48;
+    const count=mobile?30:76;
     for(let i=0;i<count;i++){
       const particle=document.createElement("i");
       particle.style.left=(Math.random()*100)+"%";
@@ -100,9 +100,18 @@ document.querySelectorAll(".record-index a,.connection-grid a").forEach(a=>a.add
       host.appendChild(particle);
     }
   }
+
+  const seal = document.querySelector(".seal");
+  if(seal && !seal.querySelector(".sealOrbitGlyphs")){
+    const orbit=document.createElement("span");
+    orbit.className="sealOrbitGlyphs";
+    orbit.setAttribute("aria-hidden","true");
+    orbit.textContent="✧ ᚷ ✦ ᛟ ✧ ᚨ ✦ ᛉ";
+    seal.appendChild(orbit);
+  }
   if(runes){
     const glyphs=["ᚷ","ᚹ","ᛟ","ᛉ","ᚨ","✧","⟡","⌘","⋄","ᛞ","ᚾ","✦"];
-    const count=mobile?5:11;
+    const count=mobile?9:18;
     for(let i=0;i<count;i++){
       const rune=document.createElement("span");
       rune.className="arcane-rune";
