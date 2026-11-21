@@ -35,3 +35,41 @@
 .record-footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:20px 0;color:#716d65;font-size:7px;letter-spacing:1.2px}.record-back{align-self:center;margin-top:25px}
 @media(max-width:650px){.record-hero{padding:30px 5px}.record-index{top:57px;gap:10px 13px}.record-index a{font-size:8px}.fact-strip{grid-template-columns:1fr}.path-grid{grid-template-columns:1fr}.pillar-grid{grid-template-columns:repeat(3,1fr)}.status-note{flex-direction:column;gap:6px}.system-list div{font-size:9px}.record-footer{flex-direction:column}.lore-section{padding:32px 0 27px}.world-entry{padding:16px 12px;gap:10px}.entry-copy em{font-size:12px}.entry-copy strong{font-size:19px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.ambient-particles{display:none}}
+
+/* VIRASAT · living archive atmosphere */
+body:after{content:"";position:fixed;inset:-18%;z-index:0;pointer-events:none;background:
+ radial-gradient(ellipse at 18% 72%,rgba(184,154,98,.075),transparent 34%),
+ radial-gradient(ellipse at 82% 22%,rgba(70,91,126,.11),transparent 38%),
+ linear-gradient(112deg,transparent 35%,rgba(205,177,120,.025) 49%,transparent 61%);
+ animation:archiveBreath 18s ease-in-out infinite alternate}
+@keyframes archiveBreath{from{transform:translate3d(-1%,1%,0) scale(1);opacity:.55}to{transform:translate3d(1%,-1%,0) scale(1.06);opacity:1}}
+.main-shell{isolation:isolate}
+.ambient-particles{opacity:.82}
+.ambient-particles i{width:var(--ember-size,2px);height:var(--ember-size,2px);box-shadow:0 0 9px 2px rgba(216,189,131,.48),0 0 20px rgba(184,154,98,.18)}
+.arcane-runes{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden;opacity:.34}
+.arcane-rune{position:absolute;color:#c4a66e;font:clamp(13px,1.5vw,19px) Georgia,serif;text-shadow:0 0 12px rgba(207,177,115,.45);opacity:0;animation:runeWander var(--rune-duration,24s) ease-in-out infinite;animation-delay:var(--rune-delay,0s);will-change:transform,opacity}
+@keyframes runeWander{0%,100%{opacity:0;transform:translate3d(0,12px,0) rotate(-12deg) scale(.8)}18%,72%{opacity:.55}50%{transform:translate3d(var(--rune-drift,12px),-20px,0) rotate(14deg) scale(1.12)}}
+.seal{animation:sealBreath 7s ease-in-out infinite,sealTurn 36s linear infinite}
+@keyframes sealTurn{from{transform:rotate(-8deg)}to{transform:rotate(352deg)}}
+.seal-ring{animation:ringPulse 8s ease-in-out infinite}
+@keyframes ringPulse{0%,100%{filter:drop-shadow(0 0 1px rgba(213,183,124,.15))}50%{filter:drop-shadow(0 0 7px rgba(213,183,124,.4))}}
+.enter-button{position:relative;overflow:hidden;isolation:isolate;box-shadow:0 0 0 rgba(184,154,98,0)}
+.enter-button:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 20%,rgba(231,207,157,.2) 48%,transparent 72%);transform:translateX(-130%);transition:transform .8s ease}
+.enter-button:hover:before,.enter-button:focus-visible:before{transform:translateX(130%)}
+.enter-button:hover{box-shadow:0 0 28px rgba(184,154,98,.22),inset 0 0 18px rgba(184,154,98,.08)}
+.nav-link:hover,.shelf-item:hover,.connection-grid a:hover{ text-shadow:0 0 12px rgba(223,196,139,.22)}
+.page.active-page{animation:pageIn .72s cubic-bezier(.2,.7,.2,1) both}
+.arch-halo{animation:haloPulse 11s ease-in-out infinite alternate}
+@keyframes haloPulse{from{opacity:.55;filter:blur(12px)}to{opacity:1;filter:blur(19px)}}
+@media(max-width:650px){
+ .arcane-runes{opacity:.22}
+ .ambient-particles{opacity:.58}
+ body:after{animation-duration:26s}
+ .seal{animation:sealBreath 7s ease-in-out infinite}
+ .enter-button:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+ body:after,.arcane-runes,.ambient-particles{display:none!important}
+ .seal,.seal-ring,.arch-halo{animation:none!important}
+ .enter-button:before{display:none}
+}

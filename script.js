@@ -81,17 +81,39 @@ searchInput.addEventListener("keydown",e=>{
 });
 document.addEventListener("click",e=>{if(!e.target.closest(".search-wrap"))searchResults.classList.remove("show");});
 document.querySelectorAll(".record-index a,.connection-grid a").forEach(a=>a.addEventListener("click",()=>{setTimeout(()=>{const target=document.querySelector(a.getAttribute("href"));if(target)target.scrollIntoView({behavior:"smooth",block:"start"});},0);}));
-(function createAmbientParticles(){
+(function createLivingAtmosphere(){
+  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduced)return;
   const host=document.getElementById("ambientParticles");
-  if(!host||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-  for(let i=0;i<20;i++){
-    const particle=document.createElement("i");
-    particle.style.left=(Math.random()*100)+"%";
-    particle.style.top=(Math.random()*100)+"%";
-    particle.style.setProperty("--duration",(15+Math.random()*17)+"s");
-    particle.style.setProperty("--delay",(-Math.random()*25)+"s");
-    particle.style.setProperty("--drift",(-28+Math.random()*56)+"px");
-    host.appendChild(particle);
+  const runes=document.getElementById("arcaneRunes");
+  const mobile=window.matchMedia("(max-width: 650px)").matches;
+  if(host){
+    const count=mobile?15:34;
+    for(let i=0;i<count;i++){
+      const particle=document.createElement("i");
+      particle.style.left=(Math.random()*100)+"%";
+      particle.style.top=(Math.random()*100)+"%";
+      particle.style.setProperty("--duration",(12+Math.random()*19)+"s");
+      particle.style.setProperty("--delay",(-Math.random()*28)+"s");
+      particle.style.setProperty("--drift",(-42+Math.random()*84)+"px");
+      particle.style.setProperty("--ember-size",(1+Math.random()*2)+"px");
+      host.appendChild(particle);
+    }
+  }
+  if(runes){
+    const glyphs=["ᚷ","ᚹ","ᛟ","ᛉ","ᚨ","✧","⟡","⌘","⋄","ᛞ","ᚾ","✦"];
+    const count=mobile?4:8;
+    for(let i=0;i<count;i++){
+      const rune=document.createElement("span");
+      rune.className="arcane-rune";
+      rune.textContent=glyphs[i%glyphs.length];
+      rune.style.left=(7+Math.random()*86)+"%";
+      rune.style.top=(8+Math.random()*82)+"%";
+      rune.style.setProperty("--rune-duration",(19+Math.random()*18)+"s");
+      rune.style.setProperty("--rune-delay",(-Math.random()*22)+"s");
+      rune.style.setProperty("--rune-drift",(-18+Math.random()*36)+"px");
+      runes.appendChild(rune);
+    }
   }
 })();
 const initial=location.hash.replace("#","");
