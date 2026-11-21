@@ -357,3 +357,143 @@ body:after{content:"";position:fixed;inset:-18%;z-index:0;pointer-events:none;ba
 }
 @media(max-width:700px){.sealOrbitGlyphs{inset:-17px;font-size:8px;letter-spacing:5px}}
 @media(prefers-reduced-motion:reduce){.sealOrbitGlyphs{animation:none!important}}
+
+
+/* VIRASAT PERFORMANCE PATCH — preserve atmosphere, reduce repaint pressure */
+.energy-ripple{
+  width:14px;height:14px;
+  animation:portalRippleSmooth 7.5s ease-out infinite!important;
+  will-change:transform,opacity;
+  box-shadow:0 0 8px rgba(230,198,137,.18);
+}
+@keyframes portalRippleSmooth{
+  0%{opacity:.45;transform:translate(-50%,-50%) scale(.2)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(48)}
+}
+/* Keep motion on compositor-friendly opacity/transform properties. */
+.landing-page:before{animation:none!important}
+.energy-vortex{animation-duration:140s!important;opacity:.65;will-change:transform}
+.energy-vortex:after{animation-duration:110s!important}
+.rune-wheel-a{animation-duration:180s!important;opacity:.62;will-change:transform}
+.rune-wheel-b{animation-duration:150s!important;opacity:.45;will-change:transform}
+.light-column{
+  filter:none!important;mix-blend-mode:normal!important;
+  background:linear-gradient(180deg,transparent,rgba(225,194,132,.035) 30%,rgba(225,194,132,.10) 52%,rgba(225,194,132,.025) 72%,transparent);
+  animation-duration:18s!important;will-change:transform,opacity;
+}
+.arch-scene{filter:none!important}
+.arch-halo{filter:none!important;animation:haloOpacity 8s ease-in-out infinite alternate!important}
+@keyframes haloOpacity{from{opacity:.45}to{opacity:.82}}
+.arch-middle{animation:none!important}
+.arch-inner{animation:innerOpacity 7s ease-in-out infinite!important}
+@keyframes innerOpacity{0%,100%{opacity:.76}50%{opacity:1}}
+.seal{animation:sealFloat 7s ease-in-out infinite!important;filter:none!important;will-change:transform}
+@keyframes sealFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.seal-ring{animation:none!important}
+.seal:before{animation-duration:30s!important;will-change:transform}
+.seal:after{animation-duration:48s!important;will-change:transform}
+.door-sigil{animation:sigilOpacity 5s ease-in-out infinite!important}
+@keyframes sigilOpacity{0%,100%{opacity:.68}50%{opacity:1}}
+.hero h1 i{animation:titleGleam 12s ease-in-out infinite!important;filter:none!important}
+.enter-button{animation:buttonOpacity 5s ease-in-out infinite!important;will-change:box-shadow}
+@keyframes buttonOpacity{0%,100%{box-shadow:0 0 0 rgba(184,154,98,0)}50%{box-shadow:0 0 15px rgba(184,154,98,.16)}}
+.enter-button:before{animation-duration:8s!important}
+.ambient-particles i{
+  box-shadow:0 0 5px 1px rgba(245,218,164,.48)!important;
+  animation:emberRise var(--duration) linear var(--delay) infinite!important;
+  will-change:transform,opacity;
+}
+.arcane-rune{
+  text-shadow:0 0 8px rgba(245,218,164,.42)!important;
+  animation:runeDrift var(--rune-duration) ease-in-out var(--rune-delay) infinite!important;
+  will-change:transform,opacity;
+}
+.sealOrbitGlyphs{animation-duration:32s!important;will-change:transform}
+.page.active-page{animation:pageFade .35s ease-out both!important;filter:none!important}
+@keyframes pageFade{from{opacity:.65}to{opacity:1}}
+@media(max-width:700px){
+  .energy-vortex{width:120vw;opacity:.4}
+  .energy-vortex:after{display:none}
+  .rune-wheel-a{width:100vw;opacity:.38}
+  .rune-wheel-b{display:none}
+  .light-column{display:none}
+  .energy-ripple{display:none}
+  .arch-halo{animation:none!important;opacity:.65}
+  .arch-inner{animation:none!important}
+  .seal{animation:none!important}
+  .seal:after{display:none}
+  .seal:before{animation-duration:45s!important}
+  .ambient-particles i{box-shadow:0 0 4px 1px rgba(245,218,164,.38)!important}
+  .arcane-rune{ text-shadow:0 0 5px rgba(245,218,164,.35)!important}
+  .enter-button{animation:none!important}
+  .enter-button:before{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .energy-ripple,.energy-vortex,.energy-vortex:after,.rune-wheel,.light-column,
+  .arch-halo,.arch-inner,.seal,.seal:before,.seal:after,.door-sigil,.hero h1 i,
+  .enter-button,.enter-button:before,.ambient-particles i,.arcane-rune,
+  .sealOrbitGlyphs,.page.active-page{animation:none!important;will-change:auto!important}
+}
+
+
+/* THE AWAKENING — moving architecture, tuned for mobile */
+.arch-scene{perspective:1000px}
+.arch-door{
+  transform-style:preserve-3d;
+  transition:transform 1.15s cubic-bezier(.2,.72,.18,1),opacity 1s ease;
+  will-change:transform;
+}
+.left-door{
+  transform-origin:left center;
+  animation:doorRestLeft 13s ease-in-out infinite alternate;
+}
+.right-door{
+  transform-origin:right center;
+  animation:doorRestRight 13s ease-in-out infinite alternate;
+}
+@keyframes doorRestLeft{0%,100%{transform:translateX(0) rotateY(0)}50%{transform:translateX(-2.2%) rotateY(1.5deg)}}
+@keyframes doorRestRight{0%,100%{transform:translateX(0) rotateY(0)}50%{transform:translateX(2.2%) rotateY(-1.5deg)}}
+.portal-orbit{will-change:transform;animation-duration:42s!important}
+.door-seam{transition:opacity .5s ease,transform .8s ease}
+.floor-energy{
+  position:absolute;left:50%;bottom:0;width:100%;height:34%;
+  transform:translateX(-50%);opacity:.6;pointer-events:none;
+  background:repeating-radial-gradient(ellipse at 50% 100%,transparent 0 18px,rgba(221,187,120,.16) 19px,transparent 21px 42px);
+  mask-image:linear-gradient(to top,#000,transparent 90%);
+  animation:floorPulse 8s ease-in-out infinite alternate;
+  will-change:opacity,transform;
+}
+@keyframes floorPulse{from{opacity:.28;transform:translateX(-50%) scaleX(.94)}to{opacity:.7;transform:translateX(-50%) scaleX(1.04)}}
+.archive-mist{
+  position:absolute;left:-20%;width:140%;height:24%;bottom:2%;pointer-events:none;
+  opacity:.0;background:
+    radial-gradient(ellipse at 20% 55%,rgba(128,145,164,.13),transparent 55%),
+    radial-gradient(ellipse at 70% 40%,rgba(174,146,99,.10),transparent 58%);
+  will-change:transform,opacity;
+}
+.mist-back{animation:mistDrift 24s ease-in-out infinite alternate;opacity:.55}
+.mist-front{bottom:0;height:18%;opacity:.35;animation:mistDrift 31s ease-in-out infinite alternate-reverse}
+@keyframes mistDrift{from{transform:translate3d(-2%,0,0)}to{transform:translate3d(3%,-9px,0)}}
+.door-sigil{transition:opacity .6s ease,transform .6s ease}
+.landing-page.is-opening .left-door{animation:none;transform:translateX(-82%) rotateY(-16deg)!important;opacity:.78}
+.landing-page.is-opening .right-door{animation:none;transform:translateX(82%) rotateY(16deg)!important;opacity:.78}
+.landing-page.is-opening .door-sigil{opacity:0;transform:translateX(-50%) scale(1.7)}
+.landing-page.is-opening .door-seam{opacity:0;transform:scaleY(0)}
+.landing-page.is-opening .arch-inner{opacity:1;box-shadow:inset 0 0 110px rgba(120,151,198,.52),0 0 65px rgba(224,190,126,.5)}
+.landing-page.is-opening .floor-energy{opacity:1;transform:translateX(-50%) scale(1.18)}
+.landing-page.is-opening .hero{opacity:.25;transition:opacity .55s ease}
+.landing-page.is-opening .arch-halo{opacity:1}
+.arcane-rune:nth-child(3n){animation-duration:25s!important}
+.arcane-rune:nth-child(4n){text-shadow:0 0 9px rgba(245,218,164,.55),0 0 20px rgba(184,154,98,.35)!important}
+@media(max-width:700px){
+  .arch-door{transition:transform .8s cubic-bezier(.2,.72,.18,1),opacity .8s ease}
+  .left-door{animation:doorRestLeft 20s ease-in-out infinite alternate}
+  .right-door{animation:doorRestRight 20s ease-in-out infinite alternate}
+  .floor-energy{height:25%;opacity:.42;animation-duration:12s}
+  .archive-mist{height:15%;opacity:.25}
+  .landing-page.is-opening .left-door{transform:translateX(-66%) rotateY(-10deg)!important}
+  .landing-page.is-opening .right-door{transform:translateX(66%) rotateY(10deg)!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .arch-door,.floor-energy,.archive-mist{animation:none!important;transition:none!important}
+}

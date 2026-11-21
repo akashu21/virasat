@@ -53,7 +53,18 @@ function showNoLand(){
 }
 navLinks.forEach(link=>link.addEventListener("click",e=>{e.preventDefault();navigate(link.dataset.page);}));
 document.querySelector(".brand").addEventListener("click",e=>{e.preventDefault();navigate("home");});
-document.getElementById("enterButton").addEventListener("click",()=>navigate("archive"));
+let entranceOpening=false;
+document.getElementById("enterButton").addEventListener("click",()=>{
+  if(entranceOpening)return;
+  const landing=document.getElementById("page-home");
+  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduced){navigate("archive");return;}
+  entranceOpening=true;
+  landing.classList.add("is-opening");
+  const button=document.getElementById("enterButton");
+  button.disabled=true;
+  setTimeout(()=>{landing.classList.remove("is-opening");button.disabled=false;entranceOpening=false;navigate("archive");},1050);
+});
 document.getElementById("backToCollection").addEventListener("click",()=>navigate("archive"));
 document.getElementById("backFromNoLand").addEventListener("click",()=>navigate("worlds"));
 document.getElementById("openNoLand").addEventListener("click",showNoLand);
@@ -88,7 +99,7 @@ document.querySelectorAll(".record-index a,.connection-grid a").forEach(a=>a.add
   const runes=document.getElementById("arcaneRunes");
   const mobile=window.matchMedia("(max-width: 650px)").matches;
   if(host){
-    const count=mobile?30:76;
+    const count=mobile?10:26;
     for(let i=0;i<count;i++){
       const particle=document.createElement("i");
       particle.style.left=(Math.random()*100)+"%";
@@ -111,7 +122,7 @@ document.querySelectorAll(".record-index a,.connection-grid a").forEach(a=>a.add
   }
   if(runes){
     const glyphs=["ᚷ","ᚹ","ᛟ","ᛉ","ᚨ","✧","⟡","⌘","⋄","ᛞ","ᚾ","✦"];
-    const count=mobile?9:18;
+    const count=mobile?4:8;
     for(let i=0;i<count;i++){
       const rune=document.createElement("span");
       rune.className="arcane-rune";
