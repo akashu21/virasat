@@ -88,7 +88,7 @@ document.querySelectorAll(".record-index a,.connection-grid a").forEach(a=>a.add
   const runes=document.getElementById("arcaneRunes");
   const mobile=window.matchMedia("(max-width: 650px)").matches;
   if(host){
-    const count=mobile?15:34;
+    const count=mobile?18:48;
     for(let i=0;i<count;i++){
       const particle=document.createElement("i");
       particle.style.left=(Math.random()*100)+"%";
@@ -102,7 +102,7 @@ document.querySelectorAll(".record-index a,.connection-grid a").forEach(a=>a.add
   }
   if(runes){
     const glyphs=["ᚷ","ᚹ","ᛟ","ᛉ","ᚨ","✧","⟡","⌘","⋄","ᛞ","ᚾ","✦"];
-    const count=mobile?4:8;
+    const count=mobile?5:11;
     for(let i=0;i<count;i++){
       const rune=document.createElement("span");
       rune.className="arcane-rune";
